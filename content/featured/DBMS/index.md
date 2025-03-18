@@ -1,7 +1,7 @@
 ---
 date: '2'
 title: 'DataBase Management System'
-cover: './dbms.jpeg'
+cover: './database.jpg'
 github: 'https://github.com/Sumairahafeez/dbfrontend'
 external: 'sumairahafeez.github.io/dbfrontend/'
 tech:
