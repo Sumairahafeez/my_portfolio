@@ -1,9 +1,9 @@
 ---
 date: '2'
-title: 'Spotify Profile'
-cover: './demo.png'
-github: 'https://github.com/bchiang7/spotify-profile'
-external: 'https://spotify-profile.herokuapp.com/'
+title: 'DataBase Management System'
+cover: './dbms.jpeg'
+github: 'https://github.com/Sumairahafeez/dbfrontend'
+external: 'sumairahafeez.github.io/dbfrontend/'
 tech:
   - React
   - Styled Components
