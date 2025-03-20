@@ -1,5 +1,5 @@
 ---
-date: '2017-11-01'
+date: '2020-01-10'
 title: 'Xpense Tracker System'
 github: ''
 external: 'https://github.com/SherMuhammadgithub/projectFrontend'

@@ -1,5 +1,5 @@
 ---
-date: '2020-01-10'
+date: '2010-01-11'
 title: 'Time to Have More Fun'
 github: 'https://github.com/bchiang7/time-to-have-more-fun'
 external: 'https://time-to-have-more-fun.now.sh/'
