@@ -6,10 +6,9 @@ github: 'https://github.com/Sumairahafeez/dbfrontend'
 external: 'sumairahafeez.github.io/dbfrontend/'
 tech:
   - React
-  - Styled Components
-  - Express
-  - Spotify API
-  - Heroku
+  - python
+  - Flask
+  - Bootstrap
 ---
 
-A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.
+I am developing a DBMS using Python (Flask) for the backend and React for the frontend, with JSON-based file storage and BTrees for indexing. My focus is on CRUD operations, transaction management, and performance optimization. I am also exploring a NoSQL-style DBMS similar to MongoDB.

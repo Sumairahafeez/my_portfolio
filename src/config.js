@@ -8,20 +8,16 @@ module.exports = {
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://www.instagram.com/SumairaHafeez06',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
+      url: 'https://www.linkedin.com/in/sumaira-hafeez-9974a6290/',
     },
     {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
-    },
+      name: 'Youtube',
+      url: 'https://www.youtube.com/@SumairaHafeez-FPDEV',
+    }
   ],
 
   navLinks: [
