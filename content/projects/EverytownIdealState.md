@@ -1,6 +1,6 @@
 ---
 date: '2022-01-20'
-title: 'Everytown Gun Law Rankings'
+title: ''
 github: ''
 external: 'https://everytownresearch.org/rankings/'
 tech:
