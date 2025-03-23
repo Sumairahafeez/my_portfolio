@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IconCodepen = () => (
+const IconYoutube = () => (
 <svg
     xmlns="http://www.w3.org/2000/svg"
     role="img"
@@ -17,4 +17,4 @@ const IconCodepen = () => (
 </svg>
 );
 
-export default IconCodepen;
+export default IconYoutube;

@@ -15,7 +15,7 @@ module.exports = {
       url: 'https://www.linkedin.com/in/sumaira-hafeez-9974a6290/',
     },
     {
-      name: 'Youtube',
+      name: 'Twitter',
       url: 'https://www.youtube.com/@SumairaHafeez-FPDEV',
     }
   ],
