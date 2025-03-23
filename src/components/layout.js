@@ -11,19 +11,21 @@ const StyledContent = styled.div`
 `;
 
 const Layout = ({ children, location }) => {
-  const isHome = location.pathname === '/';
+  const isHome = typeof window !== "undefined" && location?.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
 
   // Sets target="_blank" rel="noopener noreferrer" on external links
   const handleExternalLinks = () => {
-    const allLinks = Array.from(document.querySelectorAll('a'));
-    if (allLinks.length > 0) {
-      allLinks.forEach(link => {
-        if (link.host !== window.location.host) {
-          link.setAttribute('rel', 'noopener noreferrer');
-          link.setAttribute('target', '_blank');
-        }
-      });
+    if (typeof window !== "undefined") {
+      const allLinks = Array.from(document.querySelectorAll('a'));
+      if (allLinks.length > 0) {
+        allLinks.forEach(link => {
+          if (link.host !== window.location.host) {
+            link.setAttribute('rel', 'noopener noreferrer');
+            link.setAttribute('target', '_blank');
+          }
+        });
+      }
     }
   };
 
@@ -32,8 +34,8 @@ const Layout = ({ children, location }) => {
       return;
     }
 
-    if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
+    if (typeof window !== "undefined" && location?.hash) {
+      const id = location.hash.substring(1);
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
@@ -80,7 +82,7 @@ const Layout = ({ children, location }) => {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object,
 };
 
 export default Layout;

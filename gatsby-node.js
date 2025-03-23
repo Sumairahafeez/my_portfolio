@@ -1,16 +1,10 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-const path = require('path');
-const _ = require('lodash');
+const path = require("path");
+const _ = require("lodash");
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
-  const tagTemplate = path.resolve('src/templates/tag.js');
+  const tagTemplate = path.resolve("src/templates/tag.js");
 
   const result = await graphql(`
     {
@@ -37,54 +31,62 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   // Handle errors
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    reporter.panicOnBuild(`🚨 Error while running GraphQL query.`);
     return;
   }
 
-  // Create post detail pages
-  const posts = result.data.postsRemark.edges;
+  // Ensure posts and tags are defined
+  const posts = result.data?.postsRemark?.edges || [];
+  const tags = result.data?.tagsGroup?.group || [];
 
-  posts.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.slug,
-      component: postTemplate,
-      context: {},
+  if (posts.length === 0) {
+    reporter.warn("⚠️ No blog posts found. Skipping post page creation.");
+  } else {
+    // Create post detail pages
+    posts.forEach(({ node }) => {
+      if (node.frontmatter.slug) {
+        createPage({
+          path: node.frontmatter.slug,
+          component: postTemplate,
+          context: {
+            slug: node.frontmatter.slug, // Pass slug to context
+          },
+        });
+      } else {
+        reporter.warn(`⚠️ Skipping post with missing slug.`);
+      }
     });
-  });
+  }
 
-  // Extract tag data from query
-  const tags = result.data.tagsGroup.group;
-  // Make tag pages
-  tags.forEach(tag => {
-    createPage({
-      path: `/pensieve/tags/${_.kebabCase(tag.fieldValue)}/`,
-      component: tagTemplate,
-      context: {
-        tag: tag.fieldValue,
-      },
+  if (tags.length === 0) {
+    reporter.warn("⚠️ No tags found. Skipping tag page creation.");
+  } else {
+    // Make tag pages
+    tags.forEach(tag => {
+      if (tag.fieldValue) {
+        createPage({
+          path: `/pensieve/tags/${_.kebabCase(tag.fieldValue)}/`,
+          component: tagTemplate,
+          context: {
+            tag: tag.fieldValue,
+          },
+        });
+      } else {
+        reporter.warn(`⚠️ Skipping tag with missing fieldValue.`);
+      }
     });
-  });
+  }
 };
 
-https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
+// Fix third-party modules during HTML build
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
-  if (stage === 'build-html' || stage === 'develop-html') {
+  if (stage === "build-html" || stage === "develop-html") {
     actions.setWebpackConfig({
       module: {
         rules: [
-          {
-            test: /scrollreveal/,
-            use: loaders.null(),
-          },
-          {
-            test: /animejs/,
-            use: loaders.null(),
-          },
-          {
-            test: /miniraf/,
-            use: loaders.null(),
-          },
+          { test: /scrollreveal/, use: loaders.null() },
+          { test: /animejs/, use: loaders.null() },
+          { test: /miniraf/, use: loaders.null() },
         ],
       },
     });
@@ -93,16 +95,15 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        '@components': path.resolve(__dirname, 'src/components'),
-        '@config': path.resolve(__dirname, 'src/config'),
-        '@fonts': path.resolve(__dirname, 'src/fonts'),
-        '@hooks': path.resolve(__dirname, 'src/hooks'),
-        '@images': path.resolve(__dirname, 'src/images'),
-        '@pages': path.resolve(__dirname, 'src/pages'),
-        '@styles': path.resolve(__dirname, 'src/styles'),
-        '@utils': path.resolve(__dirname, 'src/utils'),
+        "@components": path.resolve(__dirname, "src/components"),
+        "@config": path.resolve(__dirname, "src/config"),
+        "@fonts": path.resolve(__dirname, "src/fonts"),
+        "@hooks": path.resolve(__dirname, "src/hooks"),
+        "@images": path.resolve(__dirname, "src/images"),
+        "@pages": path.resolve(__dirname, "src/pages"),
+        "@styles": path.resolve(__dirname, "src/styles"),
+        "@utils": path.resolve(__dirname, "src/utils"),
       },
     },
   });
 };
-
