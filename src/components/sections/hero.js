@@ -76,7 +76,7 @@ const Hero = () => {
       href="https://www.newline.co/courses/build-a-spotify-connected-app"
       target="_blank"
       rel="noreferrer">
-      Check out my course!
+      Check out my Resume!
     </a>
   );
 
