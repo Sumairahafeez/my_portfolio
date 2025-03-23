@@ -1,8 +1,8 @@
 ---
 date: '2019-11-12'
 title: 'Github Scrapping Project'
-github: ''
-external: 'https://github.com/Sumairahafeez/Mini-Project'
+github: 'https://github.com/Sumairahafeez/Mini-Project'
+external: ''
 tech:
   - Python
   - Pyqt

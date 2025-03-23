@@ -177,18 +177,13 @@ const ArchivePage = ({ location, data }) => {
                     ios,
                     android,
                     title,
-                    tech,
-                    company,
+                    tech
                   } = node.frontmatter;
                   return (
                     <tr key={i} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
 
                       <td className="title">{title}</td>
-
-                      <td className="company hide-on-mobile">
-                        {company ? <span>{company}</span> : <span>—</span>}
-                      </td>
 
                       <td className="tech hide-on-mobile">
                         {tech?.length > 0 &&
@@ -256,9 +251,6 @@ export const pageQuery = graphql`
             tech
             github
             external
-            ios
-            android
-            company
           }
           html
         }

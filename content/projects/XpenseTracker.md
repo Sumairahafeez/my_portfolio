@@ -1,8 +1,8 @@
 ---
 date: '2020-01-10'
 title: 'Xpense Tracker System'
-github: ''
-external: 'https://github.com/SherMuhammadgithub/projectFrontend'
+github: 'https://github.com/SherMuhammadgithub/projectFrontend'
+external: ''
 tech:
   - React
   - SQL lite
