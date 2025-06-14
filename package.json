@@ -3,10 +3,10 @@
   "homepage": "https://Sumairahafeez.github.io/my_portfolio",
   "description": "Personal Website",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Sumaira Hafeez ",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/Sumairahafeez/my_portfolio"
   },
   "keywords": [
     "gatsby"
@@ -61,8 +61,10 @@
     "react-helmet": "^6.1.0",
     "react-is": "^19.0.0",
     "react-transition-group": "^4.3.0",
+    "react-tsparticles": "^2.12.2",
     "scrollreveal": "^4.0.5",
-    "styled-components": "^5.3.0"
+    "styled-components": "^5.3.0",
+    "tsparticles": "^3.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",

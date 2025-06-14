@@ -9,8 +9,11 @@ const StyledHeroSection = styled.section`
   flex-direction: column;
   align-items: flex-start;
   min-height: 100vh;
-  height: 100vh;
-  padding: 0;
+  padding: 0 20px;
+  position: relative;
+  background: url('/images/stars-bg.jpg') no-repeat center center/cover;
+  color: var(--lightest-slate);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
   @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
     height: auto;
@@ -23,26 +26,46 @@ const StyledHeroSection = styled.section`
     font-family: var(--font-mono);
     font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
+  }
 
-    @media (max-width: 480px) {
-      margin: 0 0 20px 2px;
-    }
+  h2,
+  h3 {
+    margin: 0;
+    color: var(--lightest-slate);
   }
 
   h3 {
-    margin-top: 5px;
-    color: var(--slate);
-    line-height: 0.9;
+    margin-top: 10px;
+    font-size: var(--fz-xl);
+    font-weight: 400;
   }
 
   p {
     margin: 20px 0 0;
     max-width: 540px;
+    font-size: var(--fz-lg);
   }
 
-  .email-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    margin-top: 50px;
+  .cta-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+
+    a {
+      ${({ theme }) => theme.mixins.smallButton};
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--green);
+      padding: 0.75rem 1.5rem;
+      color: var(--green);
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: var(--green-tint);
+        color: var(--dark-navy);
+      }
+    }
   }
 `;
 
@@ -51,36 +74,26 @@ const Hero = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
+    if (prefersReducedMotion) {return;}
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
   const two = <h2 className="big-heading">Sumaira Hafeez.</h2>;
-  const three = <h3 className="big-heading"> a Frontend Developer and AI/ML enthusiast.</h3>;
-  const four = (
-    <>
-      <p>
-      I specialize in building interactive web applications using React, Tailwind CSS, and JavaScript, while also exploring AI-driven technologies. My goal is to combine frontend innovation with AI/ML solutions to create impactful digital experiences.
-        .
-      </p>
-    </>
-  );
-  const five = (
-    <a
-      className="email-link"
-      href="/resume.pdf"
-      target="_blank"
-      rel="noreferrer">
-      Check out my Resume!
-    </a>
+  const three = <h3 className="big-heading">Frontend Developer & UI/UX Explorer</h3>;
+  const subtitle = <p>Turning imagination into interactive web experiences ✨</p>;
+  const ctas = (
+    <div className="cta-buttons">
+      <a href="#projects">🔭 View Projects</a>
+      <a href="/resume.pdf" target="_blank" rel="noreferrer">
+        📄 Download Resume
+      </a>
+      <a href="#contact">💬 Let's Talk</a>
+    </div>
   );
 
-  const items = [one, two, three, four, five];
+  const items = [one, two, three, subtitle, ctas];
 
   return (
     <StyledHeroSection>
