@@ -27,19 +27,27 @@ const StyledHeroSection = styled.section`
   color: var(--lightest-slate);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   font-family: 'Poppins', sans-serif;
-
   h1 {
-    margin: 0 0 20px;
+    margin: 0 0 30px 4px;
     color: var(--green);
-    font-size: clamp(1rem, 4vw, 1.5rem);
-    font-weight: 500;
+    font-family: var(--font-mono);
+    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
+    font-weight: 400;
+
+    @media (max-width: 480px) {
+      margin: 0 0 20px 2px;
+    }
   }
 
-  h2 {
-    margin: 0;
-    font-size: clamp(2rem, 6vw, 3rem);
-    font-weight: 700;
-    color: var(--lightest-slate);
+  h3 {
+    margin-top: 5px;
+    color: var(--slate);
+    line-height: 0.9;
+  }
+
+  p {
+    margin: 20px 0 0;
+    max-width: 540px;
   }
 
   .typewriter {
@@ -89,7 +97,9 @@ const Hero = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {return;}
+    if (prefersReducedMotion) {
+      return;
+    }
     const timeout = setTimeout(() => setIsMounted(true), navDelay);
     return () => clearTimeout(timeout);
   }, []);
