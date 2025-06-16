@@ -125,7 +125,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'Python', 'React', 'Flask', 'Node.js', 'Adobe after effects'];
+  const skills = ['JavaScript (ES6+)', 'Python', 'React', 'Flask', 'Node.js', 'Adobe'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,11 +135,21 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-            I’m Sumaira Hafeez, a Frontend Developer and AI/ML enthusiast, passionate about building intuitive and engaging digital experiences. With a strong foundation in React, JavaScript, and Tailwind CSS, I develop sleek, responsive web applications that prioritize user experience.
+              I’m Sumaira Hafeez, a Frontend Developer with a strong interest in AI and Machine
+              Learning. I enjoy building clean, responsive web interfaces using React, JavaScript,
+              and Tailwind CSS — always focused on creating smooth and user-friendly experiences.
+            </p>
 
-            Beyond frontend development, I am deeply interested in Artificial Intelligence and Machine Learning, exploring how AI can enhance web interactivity and automation. I am also learning Generative AI and After Effects, aiming to integrate motion design with AI-driven frontend solutions.
+            <p>
+              I'm currently exploring how AI can enhance interactivity on the web, and I'm learning
+              Generative AI tools along with Adobe After Effects to blend motion design with
+              frontend development. I'm also deepening my understanding of databases and transaction
+              management to grow as a full-stack developer.
+            </p>
 
-            Currently, I’m expanding my knowledge in database systems and transaction management, strengthening my expertise in full-stack development. My goal is to bridge the gap between frontend innovation and AI-powered applications, creating seamless and intelligent user experiences.
+            <p>
+              My goal is to combine design, development, and AI to build smart, engaging, and
+              seamless digital products.
             </p>
 
             <p>Here are a few technologies I’ve been working with recently:</p>

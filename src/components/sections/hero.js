@@ -1,48 +1,62 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
+const typewriter = keyframes`
+  from { width: 0 }
+  to { width: 100% }
+`;
+
+const blink = keyframes`
+  0%, 100% { border-color: transparent }
+  50% { border-color: var(--green) }
+`;
+
 const StyledHeroSection = styled.section`
-  ${({ theme }) => theme.mixins.flexCenter};
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   min-height: 100vh;
   padding: 0 20px;
   position: relative;
   background: url('/images/stars-bg.jpg') no-repeat center center/cover;
   color: var(--lightest-slate);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-  @media (max-height: 700px) and (min-width: 700px), (max-width: 360px) {
-    height: auto;
-    padding-top: var(--nav-height);
-  }
+  font-family: 'Poppins', sans-serif;
 
   h1 {
-    margin: 0 0 30px 4px;
+    margin: 0 0 20px;
     color: var(--green);
-    font-family: var(--font-mono);
-    font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
-    font-weight: 400;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-weight: 500;
   }
 
-  h2,
-  h3 {
+  h2 {
     margin: 0;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
     color: var(--lightest-slate);
   }
 
-  h3 {
-    margin-top: 10px;
-    font-size: var(--fz-xl);
-    font-weight: 400;
+  .typewriter {
+    margin-top: 20px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 500;
+    color: var(--lightest-slate);
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--green);
+    width: 0;
+    animation: ${typewriter} 3s steps(40, end) forwards, ${blink} 0.75s step-end infinite;
   }
 
   p {
-    margin: 20px 0 0;
-    max-width: 540px;
+    margin: 25px 0 0;
+    max-width: 600px;
     font-size: var(--fz-lg);
   }
 
@@ -50,6 +64,7 @@ const StyledHeroSection = styled.section`
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
     margin-top: 40px;
 
     a {
@@ -80,16 +95,16 @@ const Hero = () => {
   }, []);
 
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Sumaira Hafeez.</h2>;
-  const three = <h3 className="big-heading">Frontend Developer & UI/UX Explorer</h3>;
-  const subtitle = <p>Turning imagination into interactive web experiences ✨</p>;
+  const two = <h2>Sumaira Hafeez.</h2>;
+  const three = <div className="typewriter">Frontend Developer & UI/UX Designer</div>;
+  const subtitle = <p>Turning imagination into interactive web experiences.</p>;
   const ctas = (
     <div className="cta-buttons">
-      <a href="#projects">🔭 View Projects</a>
+      <a href="#projects">View Projects</a>
       <a href="/resume.pdf" target="_blank" rel="noreferrer">
-        📄 Download Resume
+        Download Resume
       </a>
-      <a href="#contact">💬 Let's Talk</a>
+      <a href="#contact">Let's Talk</a>
     </div>
   );
 

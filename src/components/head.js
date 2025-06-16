@@ -17,16 +17,13 @@ const Head = ({ title, description, image }) => {
             defaultTitle: title
             defaultDescription: description
             siteUrl
-            defaultImage: image
-            twitterUsername
           }
         }
       }
     `,
   );
 
-  const { defaultTitle, defaultDescription, siteUrl, defaultImage, twitterUsername } =
-    site.siteMetadata;
+  const { defaultDescription, siteUrl, defaultImage, twitterUsername } = site.siteMetadata;
 
   const seo = {
     title: title,
@@ -36,7 +33,7 @@ const Head = ({ title, description, image }) => {
   };
 
   return (
-    <Helmet title={'Sumaira'} defaultTitle={'Hafeez'} titleTemplate={`%s | ${""}`}>
+    <Helmet title={'Sumaira'} defaultTitle={'Hafeez'} titleTemplate={`%s | ${''}`}>
       <html lang="en" />
 
       <meta name="description" content={seo.description} />
