@@ -9,7 +9,6 @@ import { usePrefersReducedMotion } from '@hooks';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
-
   a {
     position: relative;
     z-index: 1;
@@ -303,6 +302,65 @@ const StyledProject = styled.li`
   }
 `;
 
+// const StyledServices = styled.section`
+//   margin-bottom: 120px;
+
+//   .services-heading {
+//     font-size: clamp(24px, 5vw, var(--fz-heading));
+//     font-weight: 600;
+//     margin-bottom: 50px;
+//     position: relative;
+//     color: var(--lightest-slate);
+//     font-family: var(--font-sans);
+//     text-align: center;
+
+//     &:before {
+//       content: '01.';
+//       position: absolute;
+//       left: 0;
+//       top: -5px;
+//       font-family: var(--font-mono);
+//       color: var(--green);
+//       font-size: var(--fz-md);
+//       transform: translateX(-150%);
+//     }
+//   }
+
+//   .services-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//     gap: 30px;
+//   }
+
+//   .service-card {
+//     background-color: var(--light-navy);
+//     padding: 30px;
+//     border-radius: var(--border-radius);
+//     text-align: center;
+//     box-shadow: var(--box-shadow);
+//     transition: var(--transition);
+//     position: relative;
+
+//     h3 {
+//       margin-bottom: 15px;
+//       color: var(--green);
+//       font-size: var(--fz-xl);
+//       font-family: var(--font-sans);
+//     }
+
+//     p {
+//       color: var(--light-slate);
+//       font-size: var(--fz-md);
+//       line-height: 1.5;
+//       font-family: var(--font-sans);
+//     }
+
+//     &:hover {
+//       transform: translateY(-7px);
+//     }
+//   }
+// `;
+
 const Featured = () => {
   const data = useStaticQuery(graphql`
     {
@@ -334,19 +392,45 @@ const Featured = () => {
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
+  const revealServices = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
+    if (prefersReducedMotion) {return;}
 
-    sr.reveal(revealTitle.current, srConfig());
-    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    sr.reveal(revealServices.current, srConfig());
+    sr.reveal(revealTitle.current, srConfig(200));
+    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(300 + i * 100)));
   }, []);
 
   return (
     <section id="projects">
+      {/* --- Services Section --- */}
+      {/* <StyledServices ref={revealServices}>
+        <h2 className="services-heading">Services I Provide</h2>
+        <div className="services-grid">
+          <div className="service-card">
+            <h3>Frontend Development</h3>
+            <p>
+              Building responsive, scalable, and dynamic web applications using React.js, Vite, and Tailwind CSS. Focused on performance and accessibility.
+            </p>
+          </div>
+          <div className="service-card">
+            <h3>UI/UX Designing</h3>
+            <p>
+              Designing intuitive, pixel-perfect user interfaces using Figma and Adobe XD. Passionate about creating user-friendly experiences with modern trends.
+            </p>
+          </div>
+          <div className="service-card">
+            <h3>AI / Machine Learning</h3>
+            <p>
+              Developing intelligent applications using Python, scikit-learn, and TensorFlow. Solving problems with data-driven approaches and automation.
+            </p>
+          </div>
+        </div>
+      </StyledServices> */}
+
+      {/* --- Projects Section --- */}
       <h2 className="numbered-heading" ref={revealTitle}>
         Some Things I’ve Built
       </h2>
